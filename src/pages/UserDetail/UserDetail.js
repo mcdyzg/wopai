@@ -64,6 +64,13 @@ class UserInfo extends Component {
 						<div className='hp-zan'  style={{backgroundImage:'url(assets/img/zan.png)'}}  ></div>
 						<span className='hp-word'>{t.state.userDetail && t.state.userDetail.likes}</span>
 					</div>
+
+					<div className='ud-yuepai' onClick={()=>this.setState({showModal:true})}>
+						<img  src='assets/img/yuepai.png' className='yuepai-pic' />
+						<div className='yuepai-word'>
+							约拍
+						</div>
+					</div>
 					<div style={{height:1}} ></div>
 	            </div>
 	            <div className=''>
@@ -76,6 +83,12 @@ class UserInfo extends Component {
 					加载更多
 				</div>
                 <div style={{height:1}} ></div>
+
+                <div className='erweima-wrap' style={{display:t.state.showModal?'block':'none'}} >
+					<div className='backdrop'></div>
+					<img onClick={()=>this.setState({showModal:false})} className='close' src='assets/img/close.png' />
+					<img className='erweima' src='assets/img/erweima2.png' />
+				</div>
             </div>
         )
     }

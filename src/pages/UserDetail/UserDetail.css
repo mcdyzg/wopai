@@ -5,3 +5,17 @@
     margin-bottom: 30px;
     /*margin-bottom: 8vw;*/
 }
+
+/*约拍部分*/
+.ud-yuepai{
+	text-align: center;
+}
+.yuepai-pic{
+	width:50px;
+	height:50px;
+	margin: 10px 0 20px;
+}
+.yuepai-word{
+	color:#696969;
+	margin-bottom: 15px;
+}

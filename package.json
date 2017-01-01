@@ -12,6 +12,7 @@
     "q": "^1.4.1",
     "react": "~15.3.2",
     "react-dom": "~15.3.2",
+    "react-kit": "^0.1.14",
     "react-modal": "~1.4.0",
     "react-router": "~2.6.1",
     "react-slick": "^0.14.5",

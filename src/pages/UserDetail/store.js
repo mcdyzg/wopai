@@ -9,7 +9,7 @@ export default createStore({
     init() {
         this.state = {
             page:0,
-
+            showModal:false,
             userArticleList:[]
         };
     },
