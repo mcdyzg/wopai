@@ -43,6 +43,22 @@ class ArticleDetail extends Component {
 						<div className='hb-date'>
 							{t.state.date ||'-'}
 						</div>
+
+						<div className='flex-h hb-people jc-start'>
+							<div className='flex1' style={{display:(t.state.getPhotographer && t.state.getPhotographer.name)?'block':'none'}}>
+								<span className="grey">摄影师：</span>
+								<span className="word1">{t.state.getPhotographer?t.state.getPhotographer.name :'-'}</span>
+							</div>
+							<div className='flex1' style={{display:(t.state.model&& t.state.model.name)?'block':'none'}}>
+								<span className="grey">模特：</span>
+								<span className="word1">{t.state.model?t.state.model.name :'-'}</span>
+							</div>
+							<div className='flex1'>
+								<span className="grey">坐标：</span>
+								<span className="word1">{t.state.address ||'-'}</span>
+							</div>
+						</div>
+
 						<div className='hb-zhaiyao hb-zhaiyao1'>
 							{t.state.desc || '-'}
 						</div>
@@ -62,52 +78,6 @@ class ArticleDetail extends Component {
 					</div>
                 </div>
 
-                <div className='detail-bottom'>
-                	<a href={'#/userdetail/'+(t.state.getPhotographer ? t.state.getPhotographer.id : '')}>
-                	<div className='hp-item flex-h jc-start ai-center'>
-						<img src={t.state.getPhotographer && t.state.getPhotographer.pic || ''} className='hp-avatar' />
-						<div className='flex1'>
-							<div className='hp-name1' style={{color:'#1a1a1a'}}>
-								{t.state.getPhotographer && t.state.getPhotographer.name || '-'}
-							</div>
-							<div className='hp-name3'>
-								摄影师
-							</div>
-						</div>
-						<div className='hp-name2'>
-							<div className='hp-zan' style={{backgroundImage:'url(assets/img/zan.png)'}} ></div>
-							<span className='hp-word'>{t.state.getPhotographer && t.state.getPhotographer.likes || '-'}</span>
-							
-
-
-						</div>
-					</div>
-					</a>
-                </div>
-                
-
-                <div className='detail-bottom'>
-                	<a href={'#/userdetail/'+(t.state.model ? t.state.model.id : '')}>
-                	<div className='hp-item flex-h jc-start ai-center'>
-						<img src={t.state.model && t.state.model.pic || ''} className='hp-avatar' />
-						<div className='flex1'>
-							<div className='hp-name1' style={{color:'#1a1a1a'}}>
-								{t.state.model && t.state.model.name || '-'}
-							</div>
-							<div className='hp-name3'>
-								模特
-							</div>
-						</div>
-						<div className='hp-name2'>
-							<div className='hp-zan' style={{backgroundImage:'url(assets/img/zan.png)'}} ></div>
-							<span className='hp-word'>{t.state.model && t.state.model.likes || '-'}</span>
-							
-
-
-						</div>
-					</div>
-					</a>
-                </div>
 
                 <div style={{height:1}} ></div>
             </div>
@@ -125,3 +95,54 @@ export default ArticleDetail
 // <span className='hp-word'>/</span>
 // <div className='hp-rank'></div>
 // <span className='hp-word'>{t.state.getPhotographer && t.state.getPhotographer.likes || '-'}</span>
+
+
+
+
+// 摄影师和模特模块
+     //            <div className='detail-bottom'>
+     //            	<a href={'#/userdetail/'+(t.state.getPhotographer ? t.state.getPhotographer.id : '')}>
+     //            	<div className='hp-item flex-h jc-start'>
+					// 	<img src={t.state.getPhotographer && t.state.getPhotographer.pic || ''} className='hp-avatar' />
+					// 	<div className='flex1'>
+					// 		<div className='hp-name1' style={{color:'#1a1a1a'}}>
+					// 			{t.state.getPhotographer && t.state.getPhotographer.name || '-'}
+					// 		</div>
+					// 		<div className='hp-name3'>
+					// 			摄影师
+					// 		</div>
+					// 	</div>
+					// 	<div className='hp-name2'>
+					// 		<div className='hp-zan' style={{backgroundImage:'url(assets/img/zan.png)'}} ></div>
+					// 		<span className='hp-word'>{t.state.getPhotographer && t.state.getPhotographer.likes || '-'}</span>
+							
+
+
+					// 	</div>
+					// </div>
+					// </a>
+     //            </div>
+                
+
+     //            <div className='detail-bottom'>
+     //            	<a href={'#/userdetail/'+(t.state.model ? t.state.model.id : '')}>
+     //            	<div className='hp-item flex-h jc-start'>
+					// 	<img src={t.state.model && t.state.model.pic || ''} className='hp-avatar' />
+					// 	<div className='flex1'>
+					// 		<div className='hp-name1' style={{color:'#1a1a1a'}}>
+					// 			{t.state.model && t.state.model.name || '-'}
+					// 		</div>
+					// 		<div className='hp-name3'>
+					// 			模特
+					// 		</div>
+					// 	</div>
+					// 	<div className='hp-name2'>
+					// 		<div className='hp-zan' style={{backgroundImage:'url(assets/img/zan.png)'}} ></div>
+					// 		<span className='hp-word'>{t.state.model && t.state.model.likes || '-'}</span>
+							
+
+
+					// 	</div>
+					// </div>
+					// </a>
+     //            </div>

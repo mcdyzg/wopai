@@ -55,6 +55,10 @@ DBF.create('Wopai', {
 		url       :'likeAjax',
 		type      :'POST'
 	},
+	getArticleTypes:{
+		url       :'getArticleTypes',
+		type      :'GET'
+	},
 });
 
 module.exports = DBF.context;

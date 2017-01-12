@@ -1,39 +1,23 @@
 import React from 'react';
 import {Component} from 'reflux';
 import Action from './action'
-import Slider from 'react-slick'
 import DB from '../../db/db'
 
 import Store from './store';
-import './Home.css';
 
-class Home extends Component {
+class ArticleList extends Component {
 
 	constructor(props,context) {
 		super(props,context)
 		this.state = {};
         this.store = Store;
-        Action.getBanner()
-        Action.getArticle(1,10);
-        Action.getPhotographers()
-        Action.getModels();
+        Action.getArticle(1,10,this.props.params.type);
 
         this.loadMore = this.loadMore.bind(this);
 	}
 
-	getBannerImg(){
-		const t = this;
-		if(t.state.bannerArr === undefined){
-			return <div className=''></div>
-		}
-		const temArr = [];
-		_.map(t.state.bannerArr,function(item, index){
-			temArr.push(
-			<div key={index} className='slide-content' style={{height:$('.body-wrap').width()/2.5+'px',overflow:'hidden'}}>
-				<a href={item.href || '#/'}><img key={index} src={item.src} className='slide-item' /></a>
-			</div>)
-		})
-		return temArr;
+	componentWillReceiveProps(nextProps){
+		Action.getArticle(1,10,nextProps.params.type);
 	}
 
 	handleZan(id, ctx){
@@ -51,7 +35,7 @@ class Home extends Component {
 	}
 
 	loadMore(){
-		Action.getMoreArticle(this.state.page+1,10);
+		Action.getMoreArticle(this.state.page+1,10,this.props.params.type);
 	}
 
 	getContent(){
@@ -162,42 +146,8 @@ class Home extends Component {
 
     render() {
     	const t = this;
-    	const settings = {
-	      dots: true,
-	      infinite: false,
-	      speed: 500,
-	      arrows:false,
-	      slidesToShow: 1,
-	      slidesToScroll: 1,
-	      className:'slide-wrap'
-	    };
         return (
             <div className="home">
-            	
-                <Slider {...settings}>
-				    {
-				    	t.getBannerImg()
-				    }
-				</Slider>
-				<img onClick={()=>this.setState({showModal:true})} src='assets/img/concern.png' className='home-concern' />
-				<div className='title-bar flex-h ai-center' style={{backgroundImage:'url(assets/img/logo.png)'}} >
-					<svg onClick={()=>this.setState({showDropdown:!t.state.showDropdown})} viewBox="0 0 1024 1024" width="32" height="32"><path d="M128 213.344l768 0q17.664 0 30.176 12.512t12.512 30.176-12.512 30.176-30.176 12.512l-768 0q-17.664 0-30.176-12.512t-12.512-30.176 12.512-30.176 30.176-12.512zM128 725.344l768 0q17.664 0 30.176 12.512t12.512 30.176-12.512 30.176-30.176 12.512l-768 0q-17.664 0-30.176-12.512t-12.512-30.176 12.512-30.176 30.176-12.512zM128 469.344l768 0q17.664 0 30.176 12.512t12.512 30.176-12.512 30.176-30.176 12.512l-768 0q-17.664 0-30.176-12.512t-12.512-30.176 12.512-30.176 30.176-12.512z"  fill="#515151"></path></svg>
-					<div className='title-dropdown' style={{display:t.state.showDropdown?'block':'none'}}>
-						<div onClick={()=>{this.setState({showDropdown:!t.state.showDropdown});window.location.href="#/"}} className='title-dropdown-item'>
-							首页
-						</div>
-						<a href='#/userlist/photographer'>
-						<div className='title-dropdown-item'>
-							摄影师
-						</div>
-						</a>
-						<a href='#/userlist/model'>
-						<div className='title-dropdown-item'>
-							模特
-						</div>
-						</a>
-					</div>
-				</div>
 				<div className='home-content'>
 				{
 					t.getContent()
@@ -205,26 +155,6 @@ class Home extends Component {
 				</div>
 				<div onClick={t.loadMore} className='home-loadmore'>
 					加载更多
-				</div>
-				<div className='home-people'>
-					<div className='hp-title'>
-						摄影师
-						<span className='hp-fu-title'>PHOTOGRAPHER</span>
-						<a href='#/userlist/photographer'><span className='hp-seeall'>查看全部</span></a>
-					</div>
-					{
-						t.getPhotographersBlock()
-					}
-				</div>
-				<div className='home-people'>
-					<div className='hp-title'>
-						模特
-						<span className='hp-fu-title'>MODEL</span>
-						<a href='#/userlist/model'><span className='hp-seeall'>查看全部</span></a>
-					</div>
-					{
-						t.getModelsBlock()
-					}
 				</div>
 				<div style={{height:1}}></div>
 				<div className='erweima-wrap' style={{display:t.state.showModal?'block':'none'}} >
@@ -236,7 +166,7 @@ class Home extends Component {
         )
     }
 }
-export default Home
+export default ArticleList
 
 // 帖子缺少 是否已点赞 字段
 // 点赞 接口 aid不知从哪里获取 点赞是否可撤回

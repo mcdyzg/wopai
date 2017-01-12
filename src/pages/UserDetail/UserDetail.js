@@ -47,7 +47,7 @@ class UserInfo extends Component {
 	}
 
 	loadMore(){
-		Action.getArticle(this.state.page+1,10,this.props.params.uid);
+		Action.getMoreArticle(this.state.page+1,10,this.props.params.uid);
 	}
 
     render() {
